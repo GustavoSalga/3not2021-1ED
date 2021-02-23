@@ -20,7 +20,7 @@ console.log('-------------------')
 const quadrado2 = n => n * n
 console.log(quadrado2(9))
 
-// Função com mais de um parâmetro (CON'VENCIONAL)
+// Função com mais de um parâmetro (CONVENCIONAL)
 function potencia(b, e) {  // b = base e e = expoente
     return b ** e
 }
