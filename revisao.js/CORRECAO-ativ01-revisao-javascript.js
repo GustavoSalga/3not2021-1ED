@@ -50,74 +50,72 @@ let estado3 = {
 estadosNe.push(estado3)
 
 let estado4 = {
-    nome: 'Paraíba',
-    sigla: 'PB',
-    area: 56469.78,
-    populacao: 39996496
+   nome: 'Paraíba',
+   sigla: 'PB',
+   area: 56469.78,
+   populacao: 3996496
 }
 
 estadosNe.push(estado4)
 
+
 let estado5 = {
-    nome: 'Pernambuco',
-    sigla: 'PE',
-    area: 98148.32,
-    populacao: 9496294
+   nome: 'Pernambuco',
+   sigla: 'PE',
+   area: 98148.32,
+   populacao: 9496294
 }
 
 estadosNe.push(estado5)
 
 let estado6 = {
-    nome: 'Ceará',
-    sigla: 'CE',
-    area: 148920.47,
-    populacao: 9075649
+   nome: 'Ceará',
+   sigla: 'CE',
+   area: 148920.47,
+   populacao: 9075649
 }
 
 estadosNe.push(estado6)
 
 let estado7 = {
-    nome: 'Piauí',
-    sigla: 'PI',
-    area: 251577.74,
-    populacao: 9075649
+   nome: 'Piauí',
+   sigla: 'PI',
+   area: 251577.74,
+   populacao: 3264531
 }
 
 estadosNe.push(estado7)
 
 let estado8 = {
-    nome: 'Maranhão',
-    sigla: 'MA',
-    area: 331937.45,
-    populacao: 7035055
+   nome: 'Maranhão',
+   sigla: 'MA',
+   area: 331937.45,
+   populacao: 7035055
 }
 
 estadosNe.push(estado8)
 
 let estado9 = {
-    nome: 'Bahia',
-    sigla: 'BA',
-    area: 564733.18,
-    populacao: 14812617
+   nome: 'Bahia',
+   sigla: 'BA',
+   area: 564733.18,
+   populacao: 14812617
 }
 
 estadosNe.push(estado9)
+
+// Exibindo o vetor para verificar se está tudo certo
+console.log(estadosNe)
 
 /*
    2) Escreva uma arrow function que receba dois parâmetros, área e população, e
       calcule a densidade demográfica retornando o resultado da divisão da
       segunda pela primeira. 
 */
-let densidade = (a, b) => b / a
-console.log(densidade(estado1.area, estado1.populacao))
-console.log(densidade(estado2.area, estado2.populacao))
-console.log(densidade(estado3.area, estado3.populacao))
-console.log(densidade(estado4.area, estado4.populacao))
-console.log(densidade(estado5.area, estado5.populacao))
-console.log(densidade(estado6.area, estado6.populacao))
-console.log(densidade(estado7.area, estado7.populacao))
-console.log(densidade(estado8.area, estado8.populacao))
-console.log(densidade(estado9.area, estado9.populacao))
+
+// Usei const aqui porque densidadeDemog deve receber um valor inicial
+// e esse valor não será mais alterado
+const densidadeDemog = (area, pop) => pop / area
 
 /*
    3) Percorra o vetor estadosNe usando um for tradicional. Para cada estado,
@@ -128,18 +126,39 @@ console.log(densidade(estado9.area, estado9.populacao))
       Durante este mesmo loop, elimine a propriedade 'sigla' dos objetos.
 
 */
-for(let i = 0; i < estadosNe.length; i++){
-    
-     console.log(i, estadosNe[i])
 
- }
+for(let i = 0; i < estadosNe.length; i++) {
+   // Acrescentando a nova propriedade "densidade demográfica".
+   // O nome contém duas palavras, então a sintaxe de colchetes é obrigatória.
+   estadosNe[i]['densidade demográfica'] = densidadeDemog(estadosNe[i].area, estadosNe[i].populacao)
+
+   // Excluindo a propriedade "sigla"
+   delete estadosNe[i].sigla
+}
+
 /* 4) Escreva uma arrow function que receba um objeto. Na função, use for..in
       para extrair as propriedades e seus valores e exibi-los com console.log().
 
 */
 
+const listaEstado = estado => {
+   for(let prop in estado) {
+      console.log(`${prop} => ${estado[prop]}`)
+   }
+}
+
 /* 5) Percorra o vetor estadosNe usando for..of. Para cada objeto no vetor,
       invoque a função escrita em 4) para exibi-lo.
+*/
+
+// Traço separador
+console.log('-----------------------------------------------')
+
+for(let est of estadosNe) {
+   listaEstado(est)
+   // Traço separador
+   console.log('-----------------------------------------------')
+}
 
 /*
    6)
@@ -153,3 +172,37 @@ for(let i = 0; i < estadosNe.length; i++){
          já existentes, e assim por diante.
 
 */
+
+let nomesUf = []
+
+// Sergipe => pode ser adicionado com push(), visto que o vetor está vazio
+nomesUf.push('Sergipe')
+
+// Alagoas => deve ser inserido com unshift() para vir antes de Alagoas
+nomesUf.unshift('Alagoas')
+
+// Rio Grande do Norte => com splice(), entre os dois já existentes
+nomesUf.splice(1, 0, 'Rio Grande do Norte')
+
+// Paraíba => com splice(), antes de RN
+nomesUf.splice(2, 0, 'Paraíba')
+
+// Pernambuco => com splice(), antes de SE
+nomesUf.splice(3, 0, 'Pernambuco')
+
+// Ceará => com splice(), antes de RN
+nomesUf.splice(1, 0, 'Ceará')
+
+// Piauí => com splice(), antes de SE
+nomesUf.splice(5, 0, 'Piauí')
+
+// Maranhão => com splice(), antes de RN
+nomesUf.splice(2, 0, 'Maranhão')
+
+// Bahia => com splice(), antes de CE
+nomesUf.splice(1, 0, 'Bahia')
+
+// Traço separador
+console.log('***********************************************')
+
+console.log(nomesUf)
