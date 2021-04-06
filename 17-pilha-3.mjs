@@ -1,0 +1,1 @@
+const expr = '5 * {4 + [3 - 2 * ( 8 / 4) + 2] * 2' // Propositalmente sem a } de fechamento da expressão, pillha pode nos ajudar a detectar estes erros
