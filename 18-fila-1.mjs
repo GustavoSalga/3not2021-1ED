@@ -1,4 +1,4 @@
-import { Queue } from './lib/Queue-vetor.mjs'
+import { Queue } from './lib/Queue-obj.mjs'
 
 let fila = new Queue()
 console.log(fila.print())
